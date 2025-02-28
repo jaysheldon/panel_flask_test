@@ -30,5 +30,8 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
+# Add logging to supervisord
+RUN echo '[supervisord]\nlogfile=/var/log/supervisord.log\nlogfile_maxbytes=50MB\nlogfile_backups=10\nloglevel=info\npidfile=/var/run/supervisord.pid\n' >> /etc/supervisor/supervisord.conf
+
 # Run Supervisord
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
