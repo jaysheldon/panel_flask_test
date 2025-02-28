@@ -18,14 +18,17 @@ COPY . /app
 # Install watchdog for hot reloading
 RUN pip install watchdog
 
-# Install Nginx
-RUN apt-get update && apt-get install -y nginx && apt-get clean
+# Install Nginx and Supervisord
+RUN apt-get update && apt-get install -y nginx supervisor && apt-get clean
 
 # Copy the Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# Copy the Supervisord configuration file
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-# Run both Flask, Panel, and Nginx using a process manager
-CMD ["sh", "-c", "echo 'Starting Flask app' && flask run --host=0.0.0.0 --port=5000 --reload & echo 'Starting Bokeh server' && panel serve panel_app.py --address=0.0.0.0 --port=5006 --prefix /panel --autoreload --allow-websocket-origin='*' --session-token-expiration=900000 & echo 'Starting Nginx' && nginx -g 'daemon off;'"]
+# Run Supervisord
+CMD ["/usr/bin/supervisord"]
