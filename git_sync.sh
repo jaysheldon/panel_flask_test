@@ -6,7 +6,7 @@ APP_NAME="panel_flask_test"
 REGION="us-central1"
 REPO_URL="https://github.com/jaysheldon/$APP_NAME.git"
 REPO_NAME=$APP_NAME
-SERVICE_NAME=$APP_NAME
+SERVICE_NAME="panel-flask-test"
 GITHUB_USER="jaysheldon"
 
 # Check if the repository exists, if not, create it
