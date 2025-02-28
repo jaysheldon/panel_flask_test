@@ -22,4 +22,4 @@ fi
 # Push changes to GitHub
 git add .
 git commit -m "Deploying changes"
-git push -u origin main
+git push -u origin master
