@@ -28,4 +28,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
 
 # Run both Flask, Panel, and Nginx using a process manager
-CMD ["sh", "-c", "flask run --host=0.0.0.0 --port=5000 --reload & panel serve panel_app.py --address=0.0.0.0 --port=5006 --prefix /panel --autoreload --allow-websocket-origin="*" --session-token-expiration=900000 & nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "flask run --host=0.0.0.0 --port=5000 --reload & panel serve panel_app.py --address=0.0.0.0 --port=5006 --prefix /panel --autoreload --allow-websocket-origin='*' --session-token-expiration=900000 & nginx -g 'daemon off;'"]
