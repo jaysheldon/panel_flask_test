@@ -1,5 +1,5 @@
 substitutions:
-  _APP_NAME: 'panel_flask_test'
+  _APP_NAME: 'panel-flask-test'
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
